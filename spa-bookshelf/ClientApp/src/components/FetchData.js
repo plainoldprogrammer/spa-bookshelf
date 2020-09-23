@@ -10,6 +10,7 @@ export class FetchData extends Component {
 
   componentDidMount() {
     this.populateWeatherData();
+    this.getBook();
   }
 
   static renderForecastsTable(forecasts) {
@@ -44,7 +45,7 @@ export class FetchData extends Component {
 
     return (
       <div>
-        <h1 id="tabelLabel" >Weather forecast</h1>
+        <h1 id="tabelLabel" >Weather forecast (from the Backend)</h1>
         <p>This component demonstrates fetching data from the server.</p>
         {contents}
       </div>
@@ -55,5 +56,12 @@ export class FetchData extends Component {
     const response = await fetch('weatherforecast');
     const data = await response.json();
     this.setState({ forecasts: data, loading: false });
+  }
+
+  async getBook() {
+    console.log('Getting a book from the backend');
+    const response = await fetch('books');
+    const data = await response.json();
+    console.log('the book response is: ', data);
   }
 }

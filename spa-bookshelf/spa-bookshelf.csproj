@@ -8,6 +8,7 @@
     <SpaRoot>ClientApp\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
     <RootNamespace>spa_bookshelf</RootNamespace>
+    <StartupObject>spa_bookshelf.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

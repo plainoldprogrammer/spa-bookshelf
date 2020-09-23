@@ -26,6 +26,7 @@ namespace spa_bookshelf.Controllers
 		[HttpGet]
 		public IEnumerable<WeatherForecast> Get()
 		{
+			Console.WriteLine("Getting data from Get()");
 			var rng = new Random();
 			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
 			{
@@ -37,3 +38,4 @@ namespace spa_bookshelf.Controllers
 		}
 	}
 }
+
