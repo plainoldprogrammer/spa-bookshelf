@@ -3,7 +3,7 @@ import { Route } from 'react-router';
 import { Layout } from './components/Layout';
 import { Book } from './components/Book';
 import { Author } from './components/Author';
-import { FetchData } from './components/FetchData';
+import { Editorial } from './components/Editorial';
 
 import './custom.css'
 
@@ -15,7 +15,7 @@ export default class App extends Component {
       <Layout>
         <Route exact path='/' component={Book} />
         <Route path='/author' component={Author} />
-        <Route path='/fetch-data' component={FetchData} />
+        <Route path='/editorial' component={Editorial} />
       </Layout>
     );
   }
