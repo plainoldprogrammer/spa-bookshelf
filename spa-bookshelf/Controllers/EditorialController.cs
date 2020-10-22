@@ -10,11 +10,6 @@ namespace spa_bookshelf.Controllers
     [Route("[Controller]")]
     public class EditorialController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<EditorialController> _logger;
 
         public EditorialController(ILogger<EditorialController> logger)
