@@ -37,4 +37,3 @@ namespace spa_bookshelf.Controllers
         }
     }
 }
-
