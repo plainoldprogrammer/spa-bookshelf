@@ -44,7 +44,7 @@ export class Editorial extends Component {
 
     return (
       <div>
-        <h1 id="tabelLabel" >Editorials</h1>
+        <h1 id="editorialsTable" >Editorials</h1>
         {contents}
       </div>
     );
