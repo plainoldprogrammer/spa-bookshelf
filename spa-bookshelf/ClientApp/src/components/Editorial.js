@@ -60,7 +60,7 @@ export class Editorial extends Component {
 
   async getBook() {
     console.log('Getting a book from the backend');
-    const response = await fetch('books');
+    const response = await fetch('editorial/GetAllEditorials');
     const data = await response.json();
     console.log('the book response is: ', data);
   }
