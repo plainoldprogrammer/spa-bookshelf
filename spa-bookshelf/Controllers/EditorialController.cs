@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -9,6 +10,11 @@ namespace spa_bookshelf.Controllers
     [Route("[Controller]")]
     public class EditorialController : ControllerBase
     {
+        private static readonly string[] Summaries = new[]
+        {
+            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+        };
+
         private readonly ILogger<EditorialController> _logger;
 
         public EditorialController(ILogger<EditorialController> logger)
@@ -17,15 +23,24 @@ namespace spa_bookshelf.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllEditorials")]
-        public IEnumerable<String> GetAllEditorials()
+        [Route("all")]
+        public IEnumerable<Editorial> GetAllEditorials()
         {
-            List<String> editorials = new List<String>();
+            List<Editorial> editorials = new List<Editorial>();
 
-            editorials.Add("Manning");
-            editorials.Add("Apress");
-            editorials.Add("Pearson");
-            editorials.Add("Packt");
+            Editorial manningEditorial = new Editorial();
+            manningEditorial.Name = "Manning";
+            manningEditorial.Founded = 1990;
+            manningEditorial.Origin = "United States";
+            manningEditorial.Founder = "Marjan Bace";
+            editorials.Add(manningEditorial);
+
+            Editorial apressEditorial = new Editorial();
+            apressEditorial.Name = "Apress";
+            apressEditorial.Founded = 1999;
+            apressEditorial.Origin = "United States";
+            apressEditorial.Founder = "Gary Cornell";
+            editorials.Add(apressEditorial);
 
             return editorials;
         }

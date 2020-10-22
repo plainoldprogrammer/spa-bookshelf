@@ -5,32 +5,31 @@ export class Editorial extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { forecasts: [], loading: true };
+    this.state = { editorials: [], loading: true };
   }
 
   componentDidMount() {
-    this.populateWeatherData();
-    this.getBook();
+    this.getAllEditorials();
   }
 
-  static renderForecastsTable(forecasts) {
+  static renderEditorialsTable(editorials) {
     return (
       <table className='table table-striped' aria-labelledby="tabelLabel">
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>Name</th>
+            <th>Foundation</th>
+            <th>Origin</th>
+            <th>Founder(s)</th>
           </tr>
         </thead>
         <tbody>
-          {forecasts.map(forecast =>
-            <tr key={forecast.date}>
-              <td>{forecast.date}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
+          {editorials.map(editorial =>
+            <tr key={editorial.name}>
+              <td>{editorial.name}</td>
+              <td>{editorial.founded}</td>
+              <td>{editorial.origin}</td>
+              <td>{editorial.founder}</td>
             </tr>
           )}
         </tbody>
@@ -41,27 +40,19 @@ export class Editorial extends Component {
   render() {
     let contents = this.state.loading
       ? <p><em>Loading...</em></p>
-      : Editorial.renderForecastsTable(this.state.forecasts);
+      : Editorial.renderEditorialsTable(this.state.editorials);
 
     return (
       <div>
-        <h1 id="tabelLabel" >Weather forecast (from the Backend)</h1>
-        <p>This component demonstrates fetching data from the server.</p>
+        <h1 id="tabelLabel" >Editorials</h1>
         {contents}
       </div>
     );
   }
 
-  async populateWeatherData() {
-    const response = await fetch('weatherforecast');
+  async getAllEditorials() {
+    const response = await fetch('editorial/all');
     const data = await response.json();
-    this.setState({ forecasts: data, loading: false });
-  }
-
-  async getBook() {
-    console.log('Getting a book from the backend');
-    const response = await fetch('editorial/GetAllEditorials');
-    const data = await response.json();
-    console.log('the book response is: ', data);
+    this.setState({ editorials: data, loading: false });
   }
 }
